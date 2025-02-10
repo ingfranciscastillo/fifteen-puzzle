@@ -5,9 +5,13 @@ Este es un clásico juego de rompecabezas conocido como el **15 Puzzle**, implem
 ## Características
 
 - **Interfaz intuitiva**: Diseño limpio y fácil de usar.
+
 - **Movimientos fluidos**: Los bloques se deslizan suavemente al hacer clic.
+
 - **Reinicio del juego**: Puedes reiniciar el juego en cualquier momento para comenzar de nuevo.
+
 - **Contador de movimientos**: Lleva un registro de cuántos movimientos has realizado.
+
 - **Responsivo**: Funciona en dispositivos móviles y de escritorio.
 
 ## Instalación
@@ -15,15 +19,18 @@ Este es un clásico juego de rompecabezas conocido como el **15 Puzzle**, implem
 Para ejecutar este proyecto localmente, sigue estos pasos:
 
 1. **Clona el repositorio**:
+
    ```bash
    git clone https://github.com/ingfranciscastillo/fifteen-puzzle.git
    cd 
    ```
 2. **Instala las dependencias:**:
+
    ```bash
     bun install
    ```
 3. **Inicia el servidor de desarrollo:**:
+
    ```bash
     bun run dev --open
    ```
