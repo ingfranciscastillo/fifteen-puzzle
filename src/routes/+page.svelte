@@ -1,5 +1,6 @@
 <script>
   import Footer from "$lib/components/Footer.svelte";
+  import { onMount } from "svelte";
 
   let puzzleSize = 4;
   let tiles = [];
@@ -8,6 +9,7 @@
   let moves = 0;
   let time = 0;
   let timer;
+  let timerStarted = false;
 
   function inicializePuzzle() {
     tiles = Array.from(
@@ -16,6 +18,7 @@
     );
     tiles.push(null);
     shufflePuzzle();
+    resetTimer();
   }
 
   function shufflePuzzle() {
@@ -36,6 +39,20 @@
     ) {
       [tiles[index], tiles[emptyTile]] = [tiles[emptyTile], tiles[index]];
       emptyTile = index;
+      updateMoves();
+
+      if (!timerStarted) {
+        startTimer();
+        timerStarted = true;
+      }
+
+      if (isSolved()) {
+        clearInterval(timer);
+        const messageElement = document.getElementById("message");
+        if (messageElement) {
+          messageElement.classList.remove("hidden");
+        }
+      }
     }
   }
 
@@ -44,14 +61,42 @@
     return tiles.every((tile, index) => tile === null || tile === index + 1);
   }
 
-  // Actualiza el contador de movimientos
   function updateMoves() {
     moves++;
-    document.getElementById("moves").textContent = moves;
+    const movesElement = document.getElementById("moves");
+    if (movesElement) {
+      movesElement.textContent = moves.toString();
+    }
   }
 
-  // Inicializa el tablero al cargar el componente
-  inicializePuzzle();
+  function startTimer() {
+    timer = setInterval(() => {
+      time++;
+      const timeElement = document.getElementById("time");
+      if (timeElement) {
+        timeElement.textContent = time.toString();
+      }
+    }, 1000);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    time = 0;
+    moves = 0;
+    timerStarted = false;
+    const timeElement = document.getElementById("time");
+    if (timeElement) {
+      timeElement.textContent = time.toString();
+    }
+    const movesElement = document.getElementById("moves");
+    if (movesElement) {
+      movesElement.textContent = moves.toString();
+    }
+  }
+
+  onMount(() => {
+    inicializePuzzle();
+  });
 </script>
 
 <svelte:head>
@@ -78,7 +123,9 @@
         id="difficulty"
         class="py-2.5 px-5 border-0 rounded-xs bg-[#00995E] text-white text-lg cursor-pointer"
         on:change={(e) => {
-          puzzleSize = parseInt(e.target.value);
+          if (e.target) {
+            puzzleSize = parseInt(e.target.value);
+          }
           inicializePuzzle();
         }}
       >
@@ -104,7 +151,7 @@
         on:keydown={(e) =>
           (e.key === "Enter" || e.key === " ") && moveTile(index)}
         aria-label="Tile {tile}"
-        role="tileButton"
+        role="button"
       >
         {tile}
       </button>
@@ -130,8 +177,8 @@
     </div>
   </div>
 
-  <div id="message" class="mt-5 text-center hidden">
-    <p>Felicidades! resolviste el puzzle. 🎈</p>
+  <div id="message" class="text-2xl mt-5 text-center hidden">
+    <p>Felicidades! resolviste el puzzle. 🎉</p>
   </div>
 
   <Footer />
