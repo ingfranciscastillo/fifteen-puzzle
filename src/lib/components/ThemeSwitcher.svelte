@@ -1,4 +1,6 @@
 <script>
+  import Moon from "$lib/icons/moon.svelte";
+  import Sun from "$lib/icons/sun.svelte";
   import { onMount } from "svelte";
 
   let isDarkMode = false;
@@ -19,7 +21,11 @@
 </script>
 
 <button class="theme-switcher" on:click={toggleTheme}>
-  {isDarkMode ? "Modo Claro" : "Modo Noche"}
+  {#if isDarkMode}
+    <Sun />
+  {:else}
+    <Moon />
+  {/if}
 </button>
 
 <style>

@@ -107,18 +107,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
-<div class="relative flex flex-col justify-center items-center">
-  <h1 class="text-8xl font-bold m-10">Fifteen Puzzle</h1>
+<div class="relative flex flex-col justify-center items-center m-auto">
+  <h1 class="text-center text-8xl font-bold m-10">Fifteen Puzzle</h1>
 
-  <div class="w-lg flex justify-between items-center mb-5">
+  <div class="w-xs md:w-lg flex justify-between items-end md:items-center mb-5">
     <button
       id="new-game-btn"
       class="py-2.5 px-5 border-0 rounded-xs bg-[#00995E] hover:bg-[#007A4D] text-white text-lg cursor-pointer"
       on:click={inicializePuzzle}>Nuevo juego</button
     >
 
-    <div class="flex items-center">
-      <label for="difficulty" class="mr-2">Dificultad:</label>
+    <div class="flex flex-col md:flex-row md:items-center">
+      <label for="difficulty" class="mb-2 md:mr-2">Dificultad:</label>
       <select
         id="difficulty"
         class="py-2.5 px-5 border-0 rounded-xs bg-[#00995E] text-white text-lg cursor-pointer"
@@ -158,7 +158,7 @@
     {/each}
   </div>
 
-  <div class="w-lg flex justify-between items-center mt-5">
+  <div class="w-xs md:w-lg flex justify-between items-center mt-5">
     <button
       id="shuffle-btn"
       class="py-2.5 px-5 border-0 rounded-xs bg-[#00995E] hover:bg-[#007A4D] text-white text-lg cursor-pointer"
@@ -191,6 +191,5 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #ededed;
   }
 </style>
