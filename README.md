@@ -1,38 +1,58 @@
-# sv
+# 15 Puzzle Game - SvelteKit
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Este es un clásico juego de rompecabezas conocido como el **15 Puzzle**, implementado utilizando **SvelteKit**. El objetivo del juego es ordenar los números del 1 al 15 en orden ascendente, dejando el espacio vacío en la esquina inferior derecha.
 
-## Creating a project
+## Características
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Interfaz intuitiva**: Diseño limpio y fácil de usar.
+- **Movimientos fluidos**: Los bloques se deslizan suavemente al hacer clic.
+- **Reinicio del juego**: Puedes reiniciar el juego en cualquier momento para comenzar de nuevo.
+- **Contador de movimientos**: Lleva un registro de cuántos movimientos has realizado.
+- **Responsivo**: Funciona en dispositivos móviles y de escritorio.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Instalación
 
-# create a new project in my-app
-npx sv create my-app
-```
+Para ejecutar este proyecto localmente, sigue estos pasos:
 
-## Developing
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/ingfranciscastillo/fifteen-puzzle.git
+   cd 
+   ```
+2. **Instala las dependencias:**:
+   ```bash
+    bun install
+   ```
+3. **Inicia el servidor de desarrollo:**:
+   ```bash
+    bun run dev --open
+   ```
+3. **Abre el proyecto en tu navegador:**:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Visita http://localhost:5173 para ver el juego en acción.
 
-```bash
-npm run dev
+## Cómo jugar
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+    Haz clic en cualquier número adyacente al espacio vacío para moverlo.
 
-## Building
+    El objetivo es ordenar los números del 1 al 15 en orden ascendente.
 
-To create a production version of your app:
+    El espacio vacío debe quedar en la esquina inferior derecha.
 
-```bash
-npm run build
-```
+## Estructura del Proyecto
 
-You can preview the production build with `npm run preview`.
+    src/routes/+page.svelte: Contiene la lógica principal del juego y la interfaz de usuario.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+    src/lib/: Aquí puedes encontrar componentes reutilizables y utilidades.
+
+    static/: Contiene los archivos estáticos como imágenes o estilos globales.
+
+## Personalización
+
+Si deseas personalizar el juego, puedes modificar los estilos en src/app.css o agregar nuevas funcionalidades en src/routes/+page.svelte.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Siéntete libre de usarlo y modificarlo según tus necesidades.
+
+¡Diviértete jugando y resolviendo el 15 Puzzle! 🎮
