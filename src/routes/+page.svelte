@@ -186,7 +186,6 @@
 
 <style>
   :global(body) {
-    background-color: #1a202c;
     display: flex;
     flex-direction: column;
     justify-content: center;
